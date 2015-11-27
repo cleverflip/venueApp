@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="venueApp">
+<head>
+  <meta charset=utf-8 />
+  <title>Search venue app</title>
+  <script src="angular.js"></script>
+</head>
+<body>
+  <div ng-controller="VenueCtrl as vc">
+    <div>
+      <div ng-model="vc.message">{{vc.message}}</div>
+    </div>
+    <div>
+      <h3>Search Venues <input type="text" ng-model="vc.search" ng-change="vc.change()" /></h3>
+    </div>
+    <div>
+      <table>
+        <tr>
+          <th><b>Name</b></th>
+          <th><b>Address</b></th>
+          <th><b>Distance (m)</b></th>
+        </tr>
+        <tr ng-repeat="venue in vc.venues">
+          <td>{{venue.name}}</td>
+          <td>{{venue.location.address}}</td>
+          <td>{{venue.location.distance}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  
+  <script src="values.js"></script>
+  <script src="constants.js"></script>
+  <script src="location-service.js"></script>
+  <script src="venues-fetching-service.js"></script>
+  <script src="venue-controller.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
