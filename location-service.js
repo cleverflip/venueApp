@@ -1,32 +1,39 @@
-function locationService($q){
-  var location = {};
+(function(){
+  'use strict';
 
-  location.get = function(position){
+  function locationService($q){
+    
     var def = $q.defer();
-    if(navigator.geolocation){
-      var options = {timeout:60000};
-      var geoLoc = navigator.geolocation;
-      var watchID = geoLoc.watchPosition(
-      	function(position){
-      		def.resolve(position);
-      	},
-      	function(err){
-      		def.reject(err);
-      	},
-        options
-      );
-      return def.promise;
-      
-    }else{
-      def.reject("Geolocation is not supported by this browser.");
-      return;
+    var geoLoc = navigator.geolocation;
+    var options = {timeout:60000};
+
+    function get(){
+      if(geoLoc){
+        var watchID = geoLoc.watchPosition(positionResolve, positionReject, options);
+        return def.promise;
+      }else{
+        return def.reject("Geolocation is not supported by this browser.");
+      }
     }
+
+    function positionResolve(position){
+      def.resolve(position);
+    }
+
+    function positionReject(err){
+      def.reject(err);
+    }
+    
+    var location = {
+      get: get
+    };
+    
+    return location;
+
   }
 
-  return location;
+  angular
+  	.module('locationFetching', [])
+  	.factory('locationFetchingService', locationService);
 
-}
-
-angular
-	.module('locationFetching', [])
-	.factory('locationFetchingService', locationService);
+})();

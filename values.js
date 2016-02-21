@@ -1,4 +1,6 @@
 (function(){
+	'use strict';
+
 	angular
 		.module('apiSettings', [])
 		.value('ApiURL', {
@@ -8,4 +10,5 @@
 			client_id: '&client_id=[CLIENT_ID]', //replace [CLIENT_ID]
 			client_secret: '&client_secret=[CLIENT_SECRET]' //replace [CLIENT_SECRET]
 		});
+		
 })();

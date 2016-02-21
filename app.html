@@ -6,12 +6,12 @@
   <script src="angular.js"></script>
 </head>
 <body>
-  <div ng-controller="VenueCtrl as vc">
+  <div ng-controller="VenueCtrl as vm">
     <div>
-      <div ng-model="vc.message">{{vc.message}}</div>
+      <div ng-model="vm.message">{{vm.message}}</div>
     </div>
     <div>
-      <h3>Search Venues <input type="text" ng-model="vc.search" ng-change="vc.change()" /></h3>
+      <h3>Search Venues <input type="text" ng-model="vm.search" ng-change="vm.change()" /></h3>
     </div>
     <div>
       <table>
@@ -20,7 +20,7 @@
           <th><b>Address</b></th>
           <th><b>Distance (m)</b></th>
         </tr>
-        <tr ng-repeat="venue in vc.venues">
+        <tr ng-repeat="venue in vm.venues">
           <td>{{venue.name}}</td>
           <td>{{venue.location.address}}</td>
           <td>{{venue.location.distance}}</td>
