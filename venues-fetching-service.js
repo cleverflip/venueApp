@@ -1,15 +1,20 @@
-function venuesService($http){
-  
-  var VenuesService = {};
+(function(){
+	'use strict';
 
-  VenuesService.findVenues = function(foursquareURL, q){
-    return $http.get(foursquareURL, {cache: true}).then(q); 
-  }
+	function venuesService($http){
+	  
+	  function findVenues(foursquareURL, q){
+	    return $http.get(foursquareURL, {cache: true}).then(q); 
+	  }
 
-  return VenuesService;
-  
-}
+	  return {
+	  	findVenues: findVenues
+	  };
+	  
+	}
 
-angular
-	.module('venuesFetching', [])
-	.factory('venuesFetchingService', venuesService);
+	angular
+		.module('venuesFetching', [])
+		.factory('venuesFetchingService', venuesService);
+
+})();
