@@ -1,7 +1,7 @@
 (function(){
   'use strict';
   
-  function venueController(FoursquareApiURL, ApiURL, locationFetchingService, venuesFetchingService, $filter){
+  var venueController = function(FoursquareApiURL, ApiURL, locationFetchingService, venuesFetchingService, $filter){
     /*jshint validthis: true */
     var vm = this;
     var lat, long, latlong, foursquareURL, orderByDist, filterByName;
