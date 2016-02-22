@@ -1,7 +1,7 @@
 (function(){
   'use strict';
 
-  function locationService($q){
+  var locationService = function($q){
     
     var def = $q.defer();
     var geoLoc = navigator.geolocation;

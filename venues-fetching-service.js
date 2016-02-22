@@ -1,7 +1,7 @@
 (function(){
 	'use strict';
 
-	function venuesService($http){
+	var VenuesService = function($http){
 	  
 	  function findVenues(foursquareURL, q){
 	    return $http.get(foursquareURL, {cache: true}).then(q); 
@@ -15,6 +15,6 @@
 
 	angular
 		.module('venuesFetching', [])
-		.factory('venuesFetchingService', venuesService);
+		.factory('venuesFetchingService', VenuesService);
 
 })();
